@@ -16,10 +16,9 @@ export type PortfolioPost = {
 
 export const portfolioPosts: PortfolioPost[] = [
   {
-    id: 'axion-wms',
-    text: 'Currently designing a SaaS product at our startup — Axion WMS, a Warehouse Management System still in development. Building the foundation for inventory, orders, warehouse operations, and real-time analytics.',
-    image: '/axion-wms.png',
-    link: 'https://fe-axion-wms.vercel.app/',
+    id: 'axion-saas',
+    text: 'Currently building Axion together with a friend — a SaaS service designed to help businesses manage their operations in one integrated ecosystem. The platform brings together orders, payments, teams, inventory, and customers, and is still under active development.',
+    image: '/axion.png',
     collaborators: [
       {
         username: '2ndson._',
