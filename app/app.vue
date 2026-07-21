@@ -16,6 +16,7 @@
         :joined="profile.joined"
         :following="profile.following"
         :followers="profile.followers"
+        :cv-url="profile.cv"
         :links="profile.links"
       />
 

@@ -1,5 +1,18 @@
 <template>
-  <section class="px-4 pt-[72px] pb-4">
+  <section class="relative px-4 pt-[72px] pb-4">
+    <a
+      :href="cvUrl"
+      download="AnandaLukmanRamadhanCV.pdf"
+      class="absolute top-3 right-4 flex items-center gap-2 rounded-full border border-zinc-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-white/10"
+      aria-label="Download CV"
+    >
+      <Icon
+        name="mdi:download"
+        class="h-4 w-4"
+      />
+      Download CV
+    </a>
+
     <div class="flex items-center gap-1">
       <h2 class="text-xl font-extrabold leading-6">
         {{ name }}
@@ -73,6 +86,7 @@ defineProps<{
   joined: string
   following: string
   followers: string
+  cvUrl: string
   links: readonly {
     label: string
     href: string

@@ -8,6 +8,7 @@ export const profile = {
   followers: '1.2K',
   avatar: '/me.JPG',
   cover: '/cover-img.jpeg',
+  cv: '/AnandaLukmanRamadhanCV.pdf',
   links: [
     {
       label: 'LinkedIn',
