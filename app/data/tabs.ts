@@ -1,1 +1,1 @@
-export type ProfileTab = 'portfolio' | 'experience' | 'certification'
+export type ProfileTab = 'portfolio' | 'experience'

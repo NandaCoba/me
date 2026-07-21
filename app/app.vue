@@ -33,13 +33,8 @@
       />
 
       <ExperienceSection
-        v-else-if="activeTab === 'experience'"
-        :items="experiences"
-      />
-
-      <CertificationSection
         v-else
-        :items="certifications"
+        :items="experiences"
       />
     </div>
   </div>
@@ -48,14 +43,12 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
 import { experiences } from '~/data/experiences'
-import { certifications } from '~/data/certifications'
 import { portfolioPosts } from '~/data/portfolio'
 import type { ProfileTab } from '~/data/tabs'
 
 const tabs: { id: ProfileTab; label: string }[] = [
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'experience', label: 'Experience' },
-  { id: 'certification', label: 'Certification' },
 ]
 
 const activeTab = ref<ProfileTab>('portfolio')

@@ -14,7 +14,7 @@
       @{{ username }}
     </p>
 
-    <p class="mt-3 text-[15px] leading-5">
+    <p class="mt-3 whitespace-pre-wrap text-[15px] leading-5">
       {{ bio }}
     </p>
 

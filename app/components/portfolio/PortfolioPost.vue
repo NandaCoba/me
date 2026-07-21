@@ -24,15 +24,59 @@
         </p>
 
         <div
+          v-if="post.collaborators?.length"
+          class="mt-2 flex flex-wrap items-center gap-1.5 text-[15px] text-[#71767b]"
+        >
+          <Icon
+            name="mdi:account-multiple-outline"
+            class="h-4 w-4 shrink-0"
+          />
+          <span>With</span>
+          <a
+            v-for="collaborator in post.collaborators"
+            :key="collaborator.url"
+            :href="collaborator.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 font-medium text-[#1d9bf0] hover:underline"
+            @click.stop
+          >
+            <Icon
+              name="mdi:instagram"
+              class="h-4 w-4"
+            />
+            @{{ collaborator.username }}
+          </a>
+        </div>
+
+        <a
+          v-if="post.link"
+          :href="post.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-1 inline-flex items-center gap-1 text-[15px] text-[#1d9bf0] hover:underline"
+          @click.stop
+        >
+          <Icon
+            name="mdi:link-variant"
+            class="h-4 w-4 shrink-0"
+          />
+          {{ displayLink(post.link) }}
+        </a>
+
+        <button
           v-if="post.image"
-          class="mt-3 overflow-hidden rounded-2xl border border-[#2f3336]"
+          type="button"
+          class="mt-3 block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-[#2f3336]"
+          aria-label="Perbesar gambar"
+          @click="openViewer"
         >
           <img
             :src="post.image"
             :alt="`Portfolio ${post.id}`"
             class="max-h-[510px] w-full object-cover"
           >
-        </div>
+        </button>
 
         <!-- X-style action bar -->
         <div class="mt-1 flex items-center justify-between">
@@ -129,6 +173,67 @@
       </div>
     </div>
   </article>
+
+  <Teleport to="body">
+    <div
+      v-if="isViewerOpen && post.image"
+      class="fixed inset-0 z-50 flex flex-col bg-black/95"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Pratinjau gambar"
+      @click.self="closeViewer"
+      @wheel.prevent="handleWheel"
+    >
+      <div class="absolute top-4 right-4 z-10 flex items-center gap-2">
+        <button
+          type="button"
+          class="rounded-full bg-zinc-900/90 p-3 text-white transition-colors hover:bg-zinc-700 disabled:opacity-40"
+          aria-label="Perkecil"
+          :disabled="zoom <= 0.5"
+          @click="zoomOut"
+        >
+          <Icon name="mdi:magnify-minus-outline" class="h-6 w-6" />
+        </button>
+        <button
+          type="button"
+          class="min-w-16 rounded-full bg-zinc-900/90 px-3 py-3 text-sm text-white transition-colors hover:bg-zinc-700"
+          aria-label="Atur ulang zoom"
+          @click="resetZoom"
+        >
+          {{ Math.round(zoom * 100) }}%
+        </button>
+        <button
+          type="button"
+          class="rounded-full bg-zinc-900/90 p-3 text-white transition-colors hover:bg-zinc-700 disabled:opacity-40"
+          aria-label="Perbesar"
+          :disabled="zoom >= 3"
+          @click="zoomIn"
+        >
+          <Icon name="mdi:magnify-plus-outline" class="h-6 w-6" />
+        </button>
+        <button
+          type="button"
+          class="rounded-full bg-zinc-900/90 p-3 text-white transition-colors hover:bg-zinc-700"
+          aria-label="Tutup"
+          @click="closeViewer"
+        >
+          <Icon name="mdi:close" class="h-6 w-6" />
+        </button>
+      </div>
+
+      <div
+        class="flex h-full w-full items-center overflow-auto p-6 pt-20"
+        @click.self="closeViewer"
+      >
+        <img
+          :src="post.image"
+          :alt="`Portfolio ${post.id}`"
+          class="mx-auto h-auto object-contain transition-[width] duration-200"
+          :style="{ width: `${zoom * 100}%`, maxWidth: zoom <= 1 ? '100%' : 'none' }"
+        >
+      </div>
+    </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -140,4 +245,41 @@ defineProps<{
   username: string
   avatar: string
 }>()
+
+const isViewerOpen = ref(false)
+const zoom = ref(1)
+
+function displayLink(url: string) {
+  return url.replace(/^https?:\/\//, '')
+}
+
+function openViewer() {
+  zoom.value = 1
+  isViewerOpen.value = true
+}
+
+function closeViewer() {
+  isViewerOpen.value = false
+  zoom.value = 1
+}
+
+function zoomIn() {
+  zoom.value = Math.min(3, zoom.value + 0.25)
+}
+
+function zoomOut() {
+  zoom.value = Math.max(0.5, zoom.value - 0.25)
+}
+
+function resetZoom() {
+  zoom.value = 1
+}
+
+function handleWheel(event: WheelEvent) {
+  if (event.deltaY < 0) {
+    zoomIn()
+  } else {
+    zoomOut()
+  }
+}
 </script>

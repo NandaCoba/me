@@ -1,13 +1,13 @@
 export const profile = {
   name: 'Ananda Lukman Ramadhan',
   username: 'NandaKaws',
-  bio: 'Software Engineer • Typescript',
+  bio: 'Software Engineer • TypeScript\nStudent University of Pamulang • Semester 4',
   location: 'Jakarta, Indonesia',
   joined: 'Joined January 2023',
   following: '230',
   followers: '1.2K',
   avatar: '/me.JPG',
-  cover: '/image-cover.jpg',
+  cover: '/cover-img.jpeg',
   links: [
     {
       label: 'LinkedIn',

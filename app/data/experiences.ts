@@ -22,6 +22,7 @@ export const experiences: Experience[] = [
     location: 'Jakarta, Indonesia',
     description:
       'Building scalable backend services using NestJS, TypeScript, PostgreSQL, Docker and AWS.',
+    logo: '/axion.jpeg',
     logoInitials: 'AT',
   },
   {
@@ -33,7 +34,8 @@ export const experiences: Experience[] = [
     duration: '1 yr',
     location: 'Jakarta, Indonesia',
     description:
-      'Developed REST APIs, integrated AWS services, designed database architecture and maintained production systems.',
+      'Developed and maintained scalable backend services using NestJS, TypeScript, and microservice architecture. Designed RESTful APIs, integrated AWS services (EC2, S3, Lambda), and implemented event-driven communication between services. Collaborated with cross-functional teams to deliver reliable, maintainable, and high-performance applications while following clean architecture and software engineering best practices.',
+    logo: '/wintech.jpeg',
     logoInitials: 'WT',
   },
   {
@@ -45,7 +47,8 @@ export const experiences: Experience[] = [
     duration: '1 yr',
     location: 'Tangerang, Indonesia',
     description:
-      'Built secure RESTful APIs, payment gateway integrations, SQL/NoSQL databases and cloud deployment.',
+      'Built and maintained backend systems by developing secure RESTful APIs, designing efficient SQL/NoSQL databases, and integrating third-party services such as payment gateways and cloud platforms. Improved application performance through query optimization, implemented JWT/OAuth authentication, wrote API documentation, and participated in testing, debugging, and CI/CD deployment processes.',
+    logo: '/sinergimerahputih.jpeg',
     logoInitials: 'SM',
   },
   {
@@ -57,7 +60,8 @@ export const experiences: Experience[] = [
     duration: '3 mos',
     location: 'Jakarta, Indonesia',
     description:
-      'Provided technical support, troubleshooting, hardware/software maintenance and network assistance.',
+      'Provided technical support for hardware, software, operating systems, and network infrastructure. Diagnosed and resolved technical issues, performed system installation and maintenance, applied security updates and backups, and documented troubleshooting procedures to improve operational efficiency and user support.',
+    logo: '/rsud.png',
     logoInitials: 'RC',
   },
 ]
