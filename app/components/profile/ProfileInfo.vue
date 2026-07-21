@@ -40,6 +40,14 @@
         <span>{{ location }}</span>
       </div>
 
+      <div class="flex items-center gap-1">
+        <Icon
+          name="mdi:briefcase-outline"
+          class="h-[18px] w-[18px]"
+        />
+        <span>{{ experience }}</span>
+      </div>
+
       <a
         v-for="link in links"
         :key="link.href"
@@ -83,6 +91,7 @@ defineProps<{
   username: string
   bio: string
   location: string
+  experience: string
   joined: string
   following: string
   followers: string

@@ -13,6 +13,7 @@
         :username="profile.username"
         :bio="profile.bio"
         :location="profile.location"
+        :experience="profile.experience"
         :joined="profile.joined"
         :following="profile.following"
         :followers="profile.followers"

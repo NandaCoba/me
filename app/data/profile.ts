@@ -3,6 +3,7 @@ export const profile = {
   username: 'NandaKaws',
   bio: 'Software Engineer • TypeScript\nStudent University of Pamulang • Semester 4',
   location: 'Jakarta, Indonesia',
+  experience: '2 years experience',
   joined: 'Joined January 2023',
   following: '230',
   followers: '1.2K',
